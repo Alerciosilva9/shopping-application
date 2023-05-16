@@ -32,6 +32,8 @@ public class UserService {
 		return null;
 	}
 	
+	
+	
 	public boolean deleteById(Long Id) {
 		User user = repository.findById(Id).orElse(null);
 		if(user!=null){
@@ -56,6 +58,11 @@ public class UserService {
 			return new UserDto(user);
 		}
 		return null;
+	}
+	
+	public List<UserDto> queryByName(String name){
+		List<User> usuarios = repository.queryByNomeLike(name);
+		return usuarios.stream().map(UserDto::new).toList();
 	}
 	
 	

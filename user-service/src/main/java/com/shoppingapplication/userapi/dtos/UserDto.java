@@ -31,9 +31,12 @@ public class UserDto {
 	}
 	
 	public UserDto(User entity) {
+		this.id = entity.getId();
 		this.nome = entity.getNome();
 		this.telefone = entity.getTelefone();
 		this.cpf = entity.getCpf();
+		this.endereco = entity.getEndereco();
+		this.email = entity.getEmail();
 	}
 
 	public long getId() {
