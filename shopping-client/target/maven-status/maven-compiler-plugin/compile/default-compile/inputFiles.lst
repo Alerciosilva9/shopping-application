@@ -1,0 +1,10 @@
+/home/alercio/Documents/workspace-spring/shopping-application/shopping-client/src/main/java/com/santana/java/back/end/exception/UserNotFoundException.java
+/home/alercio/Documents/workspace-spring/shopping-application/shopping-client/src/main/java/com/santana/java/back/end/dto/CategoryDTO.java
+/home/alercio/Documents/workspace-spring/shopping-application/shopping-client/src/main/java/com/santana/java/back/end/dto/ProductDTO.java
+/home/alercio/Documents/workspace-spring/shopping-application/shopping-client/src/main/java/com/santana/java/back/end/dto/ShopReportDTO.java
+/home/alercio/Documents/workspace-spring/shopping-application/shopping-client/src/main/java/com/santana/java/back/end/dto/UserDTO.java
+/home/alercio/Documents/workspace-spring/shopping-application/shopping-client/src/main/java/com/santana/java/back/end/dto/ErrorDTO.java
+/home/alercio/Documents/workspace-spring/shopping-application/shopping-client/src/main/java/com/santana/java/back/end/exception/CategoryNotFoundException.java
+/home/alercio/Documents/workspace-spring/shopping-application/shopping-client/src/main/java/com/santana/java/back/end/dto/ItemDTO.java
+/home/alercio/Documents/workspace-spring/shopping-application/shopping-client/src/main/java/com/santana/java/back/end/dto/ShopDTO.java
+/home/alercio/Documents/workspace-spring/shopping-application/shopping-client/src/main/java/com/santana/java/back/end/exception/ProductNotFoundException.java

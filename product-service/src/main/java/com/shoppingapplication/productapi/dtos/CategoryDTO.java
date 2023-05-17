@@ -1,7 +1,7 @@
 package com.shoppingapplication.productapi.dtos;
 
-import com.shoppingapplication.productapi.entities.Category;
 
+import com.shoppingapplication.productapi.entities.Category;
 import jakarta.validation.constraints.NotNull;
 
 public class CategoryDTO {
