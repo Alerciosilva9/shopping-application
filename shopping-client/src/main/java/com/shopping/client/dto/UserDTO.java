@@ -20,6 +20,8 @@ public class UserDTO {
 	private String email;
 	@NotNull
 	private String telefone;
+	@NotNull
+	private String key;
 	
 	
 	public UserDTO() {
@@ -85,6 +87,18 @@ public class UserDTO {
 
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
+	}
+
+
+
+	public String getKey() {
+		return key;
+	}
+
+
+
+	public void setKey(String key) {
+		this.key = key;
 	}
 	
 	

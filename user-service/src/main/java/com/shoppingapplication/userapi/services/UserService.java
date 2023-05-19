@@ -3,6 +3,7 @@ package com.shoppingapplication.userapi.services;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -49,6 +50,7 @@ public class UserService {
 	public UserDto saveUser(UserDto dto) {
 		User usertosave = new User(dto);
 		UserDto usersave = new UserDto(repository.save(usertosave));
+		usersave.setKey(UUID.randomUUID().toString());
 		return usersave;
 	}
 	

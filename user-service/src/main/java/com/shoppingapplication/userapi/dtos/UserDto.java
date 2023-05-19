@@ -26,6 +26,17 @@ public class UserDto {
 	private String telefone;
 	
 	
+	private String Key;
+	
+	
+	public String getKey() {
+		return Key;
+	}
+
+	public void setKey(String key) {
+		Key = key;
+	}
+
 	public UserDto() {
 		
 	}
@@ -37,6 +48,7 @@ public class UserDto {
 		this.cpf = entity.getCpf();
 		this.endereco = entity.getEndereco();
 		this.email = entity.getEmail();
+		this.Key = entity.getKey();
 	}
 
 	public long getId() {

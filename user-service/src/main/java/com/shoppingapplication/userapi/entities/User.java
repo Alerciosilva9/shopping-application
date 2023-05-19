@@ -26,6 +26,8 @@ public class User {
 	private String telefone;
 	private Date dataCadastro;
 	
+	private String key;
+	
 	
 	public User() {
 		
@@ -33,7 +35,7 @@ public class User {
 	
 	
 	
-	public User(long id, String nome, String cpf, String endereco, String email, String telefone, Date dataCadastro) {
+	public User(long id, String nome, String cpf, String endereco, String email, String telefone, Date dataCadastro,String Key) {
 		this.id = id;
 		this.nome = nome;
 		this.cpf = cpf;
@@ -41,6 +43,7 @@ public class User {
 		this.email = email;
 		this.telefone = telefone;
 		this.dataCadastro = dataCadastro;
+		this.key = key;
 	}
 	
 	public User(UserDto dto) {
@@ -51,6 +54,7 @@ public class User {
 		this.email = dto.getEmail();
 		this.telefone = dto.getTelefone();
 		this.dataCadastro = new Date();
+		this.key = dto.getKey();
 	}
 
 
@@ -70,6 +74,18 @@ public class User {
 	public String getEmail() {
 		return email;
 	}
+	public String getKey() {
+		return key;
+	}
+
+
+
+	public void setKey(String key) {
+		this.key = key;
+	}
+
+
+
 	public String getTelefone() {
 		return telefone;
 	}

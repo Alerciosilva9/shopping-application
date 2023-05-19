@@ -38,10 +38,12 @@ public class ShopService {
 	}
 	
 	public com.shopping.client.dto.ShopDTO save(com.shopping.client.dto.ShopDTO shopDTO){
+		System.out.println("++ "+userService.getUserByCpf(shopDTO.getUserIdentifier()).getCpf());
 		if(userService.getUserByCpf(shopDTO.getUserIdentifier())!=null) {
 			if(!validateProducts(shopDTO.getItems())) {
 				return null;
 			}
+			System.out.println("ITS ALRIGHT");
 			
 			Shop shop = new Shop(shopDTO);
 			float total = shopDTO.getItems().stream().map(x -> x.getPrice()).reduce((float) 0,Float::sum);
