@@ -7,6 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import com.shopping.client.dto.ItemDTO;
+import com.shopping.client.dto.ProductDTO;
+import com.shoppingapplication.shoppingapi.dtos.DTOConverter;
 import com.shoppingapplication.shoppingapi.dtos.ShopDTO;
 import com.shoppingapplication.shoppingapi.dtos.ShopReportDTO;
 import com.shoppingapplication.shoppingapi.entities.Shop;
@@ -17,7 +20,10 @@ public class ShopService {
 	@Autowired
 	ShopRepository repository;
 
-	
+	@Autowired
+	UserService userService;
+	@Autowired
+	ProductService productService;
 	
 	
 	public List<ShopDTO> getAll(){
@@ -31,14 +37,37 @@ public class ShopService {
 		return result.stream().map(ShopDTO::new).toList();
 	}
 	
-	public ShopDTO save(ShopDTO shopDTO){
-		float total = shopDTO.getItems().stream().map(x -> x.getPrice()).reduce((float) 0,Float::sum);
-		shopDTO.setTotal(total);
+	public com.shopping.client.dto.ShopDTO save(com.shopping.client.dto.ShopDTO shopDTO){
+		if(userService.getUserByCpf(shopDTO.getUserIdentifier())!=null) {
+			if(!validateProducts(shopDTO.getItems())) {
+				return null;
+			}
+			
+			Shop shop = new Shop(shopDTO);
+			float total = shopDTO.getItems().stream().map(x -> x.getPrice()).reduce((float) 0,Float::sum);
+			System.out.println("TTOOTAL "+total);
+			shop.setTotal(total);	
+			shop.setDate(new Date());
+			shop = repository.save(shop);	
+			return DTOConverter.convert(shop);
+		}else {
+			return null;
+		}
+	}
+	
+	private boolean validateProducts(List<ItemDTO> items){
+		for(ItemDTO dto:items) {
+			ProductDTO productDTO = productService.getProductByIdentifier(dto.getProductIdentifier());
+			if(productDTO==null) {
+				return false;
+			}
+			dto.setPrice(productDTO.getPreco());
+		}
+		return true;
 		
-		Shop shop = new Shop(shopDTO);
-		shop.setDate(new Date());
-		shop = repository.save(shop);
-		return new ShopDTO(shop);
+		
+		
+		
 	}
 	
 	public ShopDTO findById(@PathVariable Long id){

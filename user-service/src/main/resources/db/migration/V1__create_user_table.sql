@@ -1,4 +1,4 @@
-create table shoppingapp.users(
+create table users.users(
 	id bigserial not null,
 	nome varchar(100) not null,
 	cpf varchar(100) not null,

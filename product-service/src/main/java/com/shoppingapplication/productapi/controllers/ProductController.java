@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.shoppingapplication.productapi.dtos.ProductDTO;
 import com.shoppingapplication.productapi.services.ProductService;
 
+import jakarta.validation.ConstraintViolationException;
 import jakarta.validation.Valid;
 
 @RestController
@@ -42,13 +43,17 @@ public class ProductController {
 	}
 	
 	@PostMapping()
-	public ProductDTO newProduct(@Valid @RequestBody ProductDTO productDTO){
-		return service.saveProduct(productDTO);
+	public ResponseEntity<?> newProduct(@Valid @RequestBody ProductDTO productDTO)throws ConstraintViolationException{
+		ProductDTO newProduct = service.saveProduct(productDTO);
+		if(newProduct==null) {
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+		}
+		return new ResponseEntity<>(newProduct, HttpStatus.OK);
 	}
 	
 	@DeleteMapping("/{id}")
 	public ResponseEntity<?> deleteByid(@PathVariable Long id) {
-		if(service.deleteById(id)) {
+		if(service.deleteById(id)!=null) {
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 		}
 		return new ResponseEntity<>(HttpStatus.NOT_FOUND);

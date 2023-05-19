@@ -3,7 +3,6 @@ package com.shopping.client.dto;
 
 
 
-import com.shoppingapplication.productapi.entities.Category;
 import jakarta.validation.constraints.NotNull;
 
 public class CategoryDTO {
@@ -19,10 +18,18 @@ public class CategoryDTO {
 	}
 	
 	
-	public CategoryDTO(Category entity){
-		this.id = entity.getId();
-		this.nome = entity.getNome();
+
+
+
+
+	public CategoryDTO(@NotNull Long id, String nome) {
+		super();
+		this.id = id;
+		this.nome = nome;
 	}
+
+
+
 
 
 

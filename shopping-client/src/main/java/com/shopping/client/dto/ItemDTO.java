@@ -1,8 +1,5 @@
 package com.shopping.client.dto;
 
-
-import com.shoppingapplication.shoppingapi.entities.Item;
-
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
@@ -16,13 +13,20 @@ public class ItemDTO{
 	public ItemDTO() {
 		
 	}
-	public ItemDTO(Item entity) {
-		this.productIdentifier = entity.getProductIdentifier();
-		this.price = entity.getPrice();
+	
+	
+	
+	
+	
+	public ItemDTO(String productIdentifier, Float price) {
+		this.productIdentifier = productIdentifier;
+		this.price = price;
 	}
-	
-	
-	
+
+
+
+
+
 	public String getProductIdentifier() {
 		return productIdentifier;
 	}

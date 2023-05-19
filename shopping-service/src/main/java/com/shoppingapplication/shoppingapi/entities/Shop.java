@@ -3,8 +3,9 @@ package com.shoppingapplication.shoppingapi.entities;
 import java.util.Date;
 import java.util.List;
 
-import com.shoppingapplication.shoppingapi.dtos.ItemDTO;
-import com.shoppingapplication.shoppingapi.dtos.ShopDTO;
+import com.shopping.client.dto.ShopDTO;
+import com.shopping.client.dto.ItemDTO;
+
 
 import jakarta.persistence.CollectionTable;
 import jakarta.persistence.ElementCollection;

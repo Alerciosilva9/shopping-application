@@ -1,6 +1,6 @@
 package com.shopping.client.dto;
 
-import com.shoppingapplication.userapi.entities.User;
+
 
 import jakarta.validation.constraints.NotNull;
 
@@ -22,18 +22,22 @@ public class UserDTO {
 	private String telefone;
 	
 	
-	public UserDto() {
+	public UserDTO() {
 		
 	}
 	
-	public UserDto(User entity) {
-		this.id = entity.getId();
-		this.nome = entity.getNome();
-		this.telefone = entity.getTelefone();
-		this.cpf = entity.getCpf();
-		this.endereco = entity.getEndereco();
-		this.email = entity.getEmail();
+	
+
+	public UserDTO(long id, String nome, String cpf, String endereco, String email,String telefone) {
+		this.id = id;
+		this.nome = nome;
+		this.cpf = cpf;
+		this.endereco = endereco;
+		this.email = email;
+		this.telefone = telefone;
 	}
+
+
 
 	public long getId() {
 		return id;

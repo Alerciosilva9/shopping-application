@@ -74,7 +74,7 @@ public class Product {
 	public Product(ProductDTO entity){
 		this.nome = entity.getNome();
 		this.identifier = entity.getProductIdentifier();
-		this.preco = this.getPreco();
+		this.preco = entity.getPreco();
 		this.descricao = entity.getDescricao();
 		if(entity.getCategory()!=null) {
 			this.category = new Category(entity.getCategory());

@@ -1,6 +1,6 @@
 package com.shopping.client.dto;
 
-import com.shoppingapplication.productapi.entities.Product;
+
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -27,16 +27,24 @@ public class ProductDTO {
 		
 	}
 	
-	public ProductDTO(Product entity){
-		this.nome = entity.getNome();
-		this.preco = entity.getPreco();
-		this.productIdentifier = entity.getIdentifier();
-		this.descricao = entity.getDescricao();
-		if (entity.getCategory() != null){
-			this.category = new CategoryDTO(entity.getCategory());
-		}
-		
+	
+	
+	
+
+
+	public ProductDTO(@NotBlank String productIdentifier, @NotBlank String nome, @NotBlank String descricao,
+			@NotNull Float preco, @NotNull CategoryDTO category) {
+		super();
+		this.productIdentifier = productIdentifier;
+		this.nome = nome;
+		this.descricao = descricao;
+		this.preco = preco;
+		this.category = category;
 	}
+
+
+
+
 
 
 	public String getProductIdentifier() {

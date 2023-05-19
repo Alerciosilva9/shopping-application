@@ -12,10 +12,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.shoppingapplication.shoppingapi.dtos.ShopDTO;
+import com.shopping.client.dto.ProductDTO;
+import com.shopping.client.dto.UserDTO;
+import com.shopping.client.dto.ShopDTO;
 import com.shoppingapplication.shoppingapi.dtos.ShopReportDTO;
+import com.shoppingapplication.shoppingapi.services.ProductService;
 import com.shoppingapplication.shoppingapi.services.ShopService;
+import com.shoppingapplication.shoppingapi.services.UserService;
 
 import jakarta.validation.Valid;
 
@@ -26,19 +29,24 @@ public class ShopController {
 	@Autowired
 	ShopService service;
 	
-	@GetMapping()
-	public List<ShopDTO> findAll(){
-		return service.getAll();
-	}
+	@Autowired 
+	UserService userService;
 	
+	@Autowired
+	ProductService productService;
+	
+	@GetMapping()
+	public List<com.shoppingapplication.shoppingapi.dtos.ShopDTO> findAll(){
+		return service.getAll();
+	}	
 	@GetMapping("/{id}")
-	public ShopDTO findById(@PathVariable Long id){
+	public com.shoppingapplication.shoppingapi.dtos.ShopDTO findById(@PathVariable Long id){
 		return service.findById(id);
 	}
 	
 	
 	@GetMapping("shopByUser/{identifier}")
-	public List<ShopDTO> getByidentifier(@PathVariable String identifier){
+	public List<com.shoppingapplication.shoppingapi.dtos.ShopDTO> getByidentifier(@PathVariable String identifier){
 		return service.getByUser(identifier);
 	}
 	
@@ -48,7 +56,7 @@ public class ShopController {
 	}
 	
 	@GetMapping("/shopping/shopByDate")
-	public List<ShopDTO> getByDate(@RequestBody ShopDTO shopDTO){
+	public List<com.shoppingapplication.shoppingapi.dtos.ShopDTO> getByDate(@RequestBody com.shoppingapplication.shoppingapi.dtos.ShopDTO shopDTO){
 		return service.getByDate(shopDTO);
 
 	}

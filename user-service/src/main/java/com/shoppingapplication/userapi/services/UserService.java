@@ -7,7 +7,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
+import com.shopping.client.exception.UserNotFoundException;
 import com.shoppingapplication.userapi.dtos.UserDto;
 import com.shoppingapplication.userapi.entities.User;
 import com.shoppingapplication.userapi.repositories.UserRepository;
@@ -57,7 +57,7 @@ public class UserService {
 		if (user != null){
 			return new UserDto(user);
 		}
-		return null;
+		throw new UserNotFoundException();
 	}
 	
 	public List<UserDto> queryByName(String name){

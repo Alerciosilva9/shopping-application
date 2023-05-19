@@ -1,9 +1,5 @@
 package com.shopping.client.dto;
 
-
-import com.shoppingapplication.shoppingapi.entities.Shop;
-
-
 import java.util.Date;
 import java.util.List;
 import jakarta.validation.constraints.NotBlank;
@@ -22,23 +18,17 @@ public class ShopDTO{
 	
 	
 	
-		public ShopDTO() {
+	public ShopDTO(String userIdentifier,float total,Date date,List<ItemDTO> items) {
+		this.userIdentifier = userIdentifier;
+		this.total = total;
+		this.date = date;
+		this.items = items;
+	}
+
+	public ShopDTO() {
 			this.date = new Date();
-		}
+	}
 			
-		public ShopDTO(Shop entity) {
-			this.userIdentifier = entity.getUserIdentifier();
-			this.total = entity.getTotal();
-			this.date = entity.getDate();
-			if(entity.getItems()!=null) {
-				this.items = entity.getItems().stream().map(ItemDTO::new).toList();
-			}
-			
-		}
-	
-	
-	
-	
 	public String getUserIdentifier() {
 		return userIdentifier;
 	}
