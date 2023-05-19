@@ -49,13 +49,14 @@ public class UserService {
 	
 	public UserDto saveUser(UserDto dto) {
 		User usertosave = new User(dto);
+		usertosave.setKey(UUID.randomUUID().toString());
 		UserDto usersave = new UserDto(repository.save(usertosave));
-		usersave.setKey(UUID.randomUUID().toString());
 		return usersave;
 	}
 	
-	public UserDto findByCpf(String cpf){
-		User user = repository.findByCpf(cpf);
+	public UserDto findByCpfAndKey(String cpf,String key){
+		System.out.println(cpf+"  "+key);
+		User user = repository.findByCpfAndKey(cpf,key);
 		if (user != null){
 			return new UserDto(user);
 		}

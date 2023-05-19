@@ -37,9 +37,9 @@ public class ShopService {
 		return result.stream().map(ShopDTO::new).toList();
 	}
 	
-	public com.shopping.client.dto.ShopDTO save(com.shopping.client.dto.ShopDTO shopDTO){
-		System.out.println("++ "+userService.getUserByCpf(shopDTO.getUserIdentifier()).getCpf());
-		if(userService.getUserByCpf(shopDTO.getUserIdentifier())!=null) {
+	public com.shopping.client.dto.ShopDTO save(com.shopping.client.dto.ShopDTO shopDTO, String key){
+		
+		if(userService.getUserByCpfAndKey(shopDTO.getUserIdentifier(),key)!=null) {
 			if(!validateProducts(shopDTO.getItems())) {
 				return null;
 			}

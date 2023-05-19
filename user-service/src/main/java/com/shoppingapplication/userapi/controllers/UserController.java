@@ -64,8 +64,8 @@ public class UserController {
 	
 	
 	@GetMapping("/cpf/{cpf}")
-	public ResponseEntity<?> findByCpf(@PathVariable String cpf) {
-		UserDto userbycpf = service.findByCpf(cpf);
+	public ResponseEntity<?> findByCpfAndKey(@PathVariable String cpf, @RequestParam(name="key",required = true) String key) {
+		UserDto userbycpf = service.findByCpfAndKey(cpf,key);
 		if(userbycpf!=null) return new ResponseEntity<>(userbycpf, HttpStatus.OK);
 		
 		return new ResponseEntity<>(HttpStatus.NOT_FOUND);

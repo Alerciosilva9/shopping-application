@@ -8,6 +8,7 @@ import com.shoppingapplication.userapi.entities.User;
 
 public interface UserRepository extends JpaRepository<User, Long>{
 
-	User findByCpf(String cpf);
+	User findByCpfAndKey(String cpf, String Key);
+	
 	List<User> queryByNomeLike(String name);
 }
